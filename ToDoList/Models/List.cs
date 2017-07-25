@@ -12,9 +12,6 @@ namespace ToDoList.Models
         public int ListID { get; set; }
         public string ListTitle { get; set; }
         public DateTime ListCreatDate { get; set; }
-
-        [Display(Name = "List")]
-        public string Name { get; set; }
-        public virtual ICollection<Task> IsDone { get; set; }
+        public virtual ICollection<Task> Task { get; set; }
     }
 }

@@ -15,7 +15,8 @@ namespace ToDoList.Models
         public bool IsDone { get; set; }
         public DateTime DueDate { get; set; }
 
-        [ForeignKey("ListID")]
+        [ForeignKey("List")]
         public int ListID { get; set; }
+        public virtual List List { get; set; }
     }
 }
