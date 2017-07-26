@@ -1,38 +1,12 @@
 ﻿@model IEnumerable<ToDoList.Models.Task>
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Overdue Tasks</h2>
-@{
-    Html.RenderPartial("Reminders");
-}
+<table>
 
-
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.List.ListTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaskDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DueDate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-   
+@foreach (var item in Model)
+{
+    if (item.DueDate < DateTime.Now && item.IsDone == false)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.List.ListTitle)
@@ -52,7 +26,7 @@
             @Html.ActionLink("Delete", "Delete", new { id = item.TaskID })
         </td>
     </tr>
-    
+    }
 }
 
 </table>

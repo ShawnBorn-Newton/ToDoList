@@ -120,6 +120,12 @@ namespace ToDoList.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Reminders()
+        {
+            var tasks = db.Tasks.Include(t => t.List);
+            return View(tasks.ToList());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
